@@ -79,60 +79,61 @@ const saveDataToLocalStorage = () => {
     <div className='app-container'>
         <h1>Score Board</h1>
       {/* Table for data entry */}
-      <table border="0" cellPadding="5" cellSpacing="0">
-        <thead>
-          <tr>
-            {columnNames.map((name, colIndex) => (
-              <th key={colIndex} className='col-heading'>
-                <input
-                className='heading-input'
-                  value={name}
-                  onChange={e => {
-                    const newNames = [...columnNames];
-                    newNames[colIndex] = e.target.value;
-                    setColumnNames(newNames);
-                    saveDataToLocalStorage();
-                  }}
-                />
-                <button className='delete-column-btn btn' onClick={() => deleteColumn(colIndex)}>
-                  <MdDelete className='delete-icon'/>
-                </button>
-              </th>
-            ))}
-            <th><button className='add-column-btn btn' onClick={addColumn}><IoMdAdd className='add-column-icon'/></button></th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableData.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {row.map((cell, colIndex) => (
-                <td key={colIndex}>
+      <div class="table-container">
+        <table border="0" cellPadding="5" cellSpacing="0">
+          <thead>
+            <tr>
+              {columnNames.map((name, colIndex) => (
+                <th key={colIndex} className='col-heading'>
                   <input
-                  className='data-input'
-                    value={cell}
-                    onChange={e => handleCellChange(rowIndex, colIndex, e.target.value)}
-                    type="text"
+                  className='heading-input'
+                    value={name}
+                    onChange={e => {
+                      const newNames = [...columnNames];
+                      newNames[colIndex] = e.target.value;
+                      setColumnNames(newNames);
+                      saveDataToLocalStorage();
+                    }}
                   />
+                  <button className='delete-column-btn btn' onClick={() => deleteColumn(colIndex)}>
+                    <MdDelete className='delete-icon'/>
+                  </button>
+                </th>
+              ))}
+              <th><button className='add-column-btn btn' onClick={addColumn}><IoMdAdd className='add-column-icon'/></button></th>
+            </tr>
+          </thead>
+          <tbody>
+            {tableData.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {row.map((cell, colIndex) => (
+                  <td key={colIndex}>
+                    <input
+                    className='data-input'
+                      value={cell}
+                      onChange={e => handleCellChange(rowIndex, colIndex, e.target.value)}
+                      type="text"
+                    />
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr>
+              {totals.map((total, colIndex) => (
+                <td
+                className='total-score'
+                  key={colIndex}
+                  style={{ color: total >= 201 ? '#dc2f2f' : '#222831' }}
+                >
+                  {total}
                 </td>
               ))}
             </tr>
-          ))}
-        </tbody>
-        <tfoot>
-          <tr>
-            {totals.map((total, colIndex) => (
-              <td
-              className='total-score'
-                key={colIndex}
-                style={{ color: total >= 201 ? '#dc2f2f' : '#222831' }}
-              >
-                {total}
-              </td>
-            ))}
-          </tr>
-        </tfoot>
-      </table>
-
+          </tfoot>
+        </table>
+      </div>
       <button className='reset-btn btn' onClick={resetTable}>Reset Table</button>
     </div>
     

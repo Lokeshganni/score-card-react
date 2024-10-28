@@ -5,10 +5,7 @@
     justify-content: center;
     align-items: center;
     background-color: #eeeeee;
-    padding: 55px;
-    overflow-x: auto; 
     width: 100%;
-    border: 1px solid red;
 }
 
 h1{
@@ -16,6 +13,11 @@ h1{
     font-family: 'Roboto';
     color: #596e79;
     font-weight: bold;
+}
+
+.table-container {
+    overflow-x: auto;   
+    max-width: 100%;    
 }
 
 table{
