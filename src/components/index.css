@@ -16,15 +16,18 @@ h1{
 
 input{
     border-radius: 15px;
-    padding: 5px 7px;
-    width: 80px;
+    padding: 5px 10px;
+    width: 85px;
     border: none;
     outline: none;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+}
+
+.col-heading{
+    position: relative;
 }
 
 .heading-input {
@@ -39,7 +42,23 @@ input{
     background-color: #dfd3c3 ;
     font-weight: 700;
     font-size: 14px;
+    text-align: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.delete-column-btn{
+    position: absolute;
+    background-color: transparent;
+    top: 47%;
+    bottom: 53%;
+    right: 3px;
+}
+
+.delete-icon{
+    width: 17px;
+    height: 17px;
+    /* color: #596e79; */
+    color: #402a23;
 }
 
 .btn{

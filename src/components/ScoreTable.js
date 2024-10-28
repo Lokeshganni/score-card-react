@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 
 import { IoMdAdd } from "react-icons/io";
+import { MdDelete } from "react-icons/md";
 
 import './index.css'
 
@@ -62,6 +63,16 @@ const saveDataToLocalStorage = () => {
     saveDataToLocalStorage();
   };
 
+  // Handle deleting a specific column
+  const deleteColumn = (colIndex) => {
+    const newColumnNames = columnNames.filter((_, index) => index !== colIndex);
+    const updatedTableData = tableData.map(row => row.filter((_, index) => index !== colIndex));
+    
+    setColumnNames(newColumnNames);
+    setTableData(updatedTableData);
+    saveDataToLocalStorage();
+  };
+
   const totals = calculateColumnTotals();
 
   return (
@@ -72,7 +83,7 @@ const saveDataToLocalStorage = () => {
         <thead>
           <tr>
             {columnNames.map((name, colIndex) => (
-              <th key={colIndex}>
+              <th key={colIndex} className='col-heading'>
                 <input
                 className='heading-input'
                   value={name}
@@ -83,6 +94,9 @@ const saveDataToLocalStorage = () => {
                     saveDataToLocalStorage();
                   }}
                 />
+                <button className='delete-column-btn btn' onClick={() => deleteColumn(colIndex)}>
+                  <MdDelete className='delete-icon'/>
+                </button>
               </th>
             ))}
             <th><button className='add-column-btn btn' onClick={addColumn}><IoMdAdd className='add-column-icon'/></button></th>
