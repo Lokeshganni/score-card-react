@@ -108,6 +108,7 @@ input {
   text-align: center;
   font-size: 18px;
   font-weight: bold;
+  /* text-shadow: 1px 1px 5px #9fa2a6; */
 }
 
 .reset-btn {

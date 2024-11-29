@@ -125,7 +125,7 @@ const saveDataToLocalStorage = () => {
                 <td
                 className='total-score'
                   key={colIndex}
-                  style={{ color: total >= 201 ? '#ed0000' : '#222831' }}
+                  style={{ color: total >= 201 ? '#ed0000' : total >= 176 ? '#00a037' : '#222831' }}
                 >
                   {total}
                 </td>
